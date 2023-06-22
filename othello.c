@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "othello.c"
 
 int main(void){
     int i, j, x, y;
