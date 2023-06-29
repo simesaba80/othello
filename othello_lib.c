@@ -118,3 +118,29 @@ void rightup(int board[8][8], int y, int x, int t)
         }
     }
 }
+
+void right(int board[8][8], int y, int x, int t)
+{
+    int i;
+    int endx = x + 1;
+    if(t % 2 == 1){
+        while(board[y][endx] == -1){
+            endx++;
+        }
+        if(board[y][endx] == 1){
+            for(i = x + 1; i < endx; i++){
+                board[y][i] *= -1;
+            }
+        }
+    }
+    if(t % 2 == 0){
+        while(board[y][endx] == 1){
+            endx++;
+        }
+        if(board[y][endx] == -1){
+            for(i = x + 1; i < endx; i++){
+                board[y][i] *= -1;
+            }
+        }
+    }
+}
