@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "othello.h"
+#include "othellolib.h"
 
 int main(void){
     int i, j, x, y;
@@ -45,7 +45,8 @@ int main(void){
             } else {
                 board[y][x] = -1;
             }
-            left(board, x, y, t);
+            left(board, y, x, t);
+            leftup(board, y, x, t);
             t++; //正しく打てたらターンを増やす
       } else {
             printf("その位置は埋まっているかもしくは範囲外です\n");
