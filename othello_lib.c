@@ -1,7 +1,8 @@
-#include "othello.h"
+#include "othellolib.h"
 #include <stdio.h>
 
-void left(int board[8][8], int x, int y, int t)
+//おいた場所から左方向への判定
+void left(int board[8][8], int y, int x, int t)
 {
     int i, tmpx;
     tmpx = x;
@@ -22,6 +23,40 @@ void left(int board[8][8], int x, int y, int t)
         if(board[y][tmpx] == -1){
             for(i = x-1; i > tmpx; i--){
                 board[y][i] *= -1;
+            }
+        }
+    }
+}
+
+//おいた場所から左上への判定
+void leftup(int board[8][8], int y, int x, int t)
+{
+    int endx, endy;
+    endx = x-1;
+    endy = y-1;
+    if(t % 2 == 1){
+        while(board[endy][endx] == -1){
+            endx--;
+            endy--;
+        }
+        if(board[endy][endx] == 1){
+            while(x > endx+1 && y > endy+1){
+                x--;
+                y--;
+                board[y][x] *= -1;
+            }
+        }
+    }
+    if(t % 2 == 0){
+        while(board[endy][endx] == 1){
+            endx--;
+            endy--;
+        }
+        if(board[endy][endx] == -1){
+            while(x > endx+1 && y > endy+1){
+                x--;
+                y--;
+                board[y][x] *= -1;
             }
         }
     }
