@@ -47,6 +47,7 @@ int main(void){
             }
             left(board, y, x, t);
             leftup(board, y, x, t);
+            up(board, y, x, t);
             t++; //正しく打てたらターンを増やす
       } else {
             printf("その位置は埋まっているかもしくは範囲外です\n");

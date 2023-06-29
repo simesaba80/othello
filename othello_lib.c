@@ -61,3 +61,28 @@ void leftup(int board[8][8], int y, int x, int t)
         }
     }
 }
+
+void up(int board[8][8], int y, int x, int t)
+{
+int i, endy;
+    endy = y-1;
+    if(t % 2 == 1){
+        while(board[endy][x] == -1){
+            endy--;
+        }
+        if(board[endy][x] == 1){
+            for(i = y-1; i > endy; i--){
+                board[i][x] *= -1;
+            }
+        }
+    } else if(t % 2 == 0) {
+        while(board[endy][x] == 1){
+            endy--;
+        }
+        if(board[endy][x] == -1){
+            for(i = y-1; i > endy; i--){
+                board[i][x] *= -1;
+            }
+        }
+    }
+}
