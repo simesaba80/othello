@@ -144,3 +144,35 @@ void right(int board[8][8], int y, int x, int t)
         }
     }
 }
+
+void rightdown(int board[8][8], int y, int x, int t)
+{
+    int endy = y + 1;
+    int endx = x + 1;
+    if(t % 2 == 1){
+        while(board[endy][endx] == -1){
+            endx++;
+            endy++;
+        }
+        if(board[endy][endx] == 1){
+            while(x < endx-1 && y < endy-1){
+                x++;
+                y++;
+                board[y][x] *= -1;
+            }
+        }
+    }
+    if(t % 2 == 0){
+        while(board[endy][endx] == 1){
+            endx++;
+            endy++;
+        }
+        if(board[endy][endx] == -1){
+            while(x < endx-1 && y < endy-1){
+                x++;
+                y++;
+                board[y][x] *= -1;
+            }
+        }
+    }
+}
