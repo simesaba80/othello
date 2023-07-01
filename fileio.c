@@ -1,16 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void imput(void)
+int imput(void)
 {
     char buf[2];
-    FILE *fp;
-    if(!(fp = fopen("buffer", "w"))){
-        return 0;
-    }
+    int coordinate;
     fgets(buf, sizeof(buf), stdin);
-    fprintf(fp, "%s", buf);
-    fclose(fp);
+    (long)coordinate = strtol(buf, NULL, 10);
 
-    return 0;
+    return coordinate;
 }

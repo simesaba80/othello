@@ -33,10 +33,10 @@ int main(void){
         }
         printf("%dターン目\n", t);
         printf("縦の座標を入力してね");
-        imput();
+        y = imput();
         y--; //配列用に変換
         printf("横の座標を入力してね");
-        imput();
+        x = imput();
         x--; //配列用に変換
         //先行は○（内部的には１）
         if(board[y][x] == 0 && x < 8 && y < 8) {
