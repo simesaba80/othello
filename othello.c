@@ -4,6 +4,8 @@
 int main(void){
     int i, j, x, y, reverse;
     int t = 1;
+    int blackstone = 2;
+    int whitestone = 2;
     int board[8][8] = {
         {0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0},
@@ -64,6 +66,14 @@ int main(void){
             printf("その場所にはおけません\n");
             board[y][x] = 0;    //おけなかった場合は取り消してcontinue
             continue;
+        }
+        if(t % 2 == 1){
+            blackstone += reverse;
+            whitestone -= reverse;
+        }
+        if(t % 2 == 0){
+            blackstone -= reverse;
+            whitestone += reverse;
         }
         t++; //正しく打てたらターンを増やす
     }
