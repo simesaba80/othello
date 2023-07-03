@@ -3,7 +3,10 @@
 
 int main(void){
     int i, j, x, y, reverse;
+    int passturn = 0;   //パスカウント
     int t = 1;
+    int blackstone = 2;
+    int whitestone = 2;
     int board[8][8] = {
         {0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0},
@@ -16,6 +19,9 @@ int main(void){
     };
 
     while(1){
+        if(t == 82){    //82ターン目になったら自動でぬけだす
+            break;
+        }
         printf(" |1|2|3|4|5|6|7|8|\n");
         for(i = 0; i < 8; i++){
             printf("%d|", i+1);
@@ -31,23 +37,35 @@ int main(void){
             }
             printf("\n");
         }
+        //両者連続してパスすると終了する
+        if(passturn == 2){
+            break;
+        }
+/*配列の先頭、打つ場所の番号（配列変換済み）、ターン数を渡す
+それぞれの方向に端っこまで検証する、ターン数で白か黒か決める */
         x = 0;
         y = 0;
         printf("%dターン目\n", t);
-        printf("縦の座標を入力してね");
+        printf("縦の座標を入力してね(psを入力でパス)");
         y = imput();
         while(y == 0){
             printf("フォーマットが違います。もう一度入力してね");
             y = imput();
         }
         y--;//配列用の変換
-        printf("横の座標を入力してね");
+        printf("横の座標を入力してね(psを入力でパス)");
         x = imput();
         while(x == 0){
             printf("フォーマットが違います。もう一度入力してね");
             x = imput();
         }
         x--;//配列用の変換
+        //yかxにpsを入力した場合200がくる
+        if(y == 200 || x == 200){
+            t++;
+            passturn++;
+            continue;
+        }
         //先行は○（内部的には１）
         //範囲外や埋まっている場合はcontinue文で先頭に戻る
         if(board[y][x] != 0 || x < 0 || x > 8 || y < 0 || y > 8) {
@@ -65,10 +83,26 @@ int main(void){
             board[y][x] = 0;    //おけなかった場合は取り消してcontinue
             continue;
         }
+        //石をカウントする
+        if(t % 2 == 1){
+            blackstone += reverse;
+            whitestone -= reverse;
+        }
+        if(t % 2 == 0){
+            blackstone -= reverse;
+            whitestone += reverse;
+        }
         t++; //正しく打てたらターンを増やす
+        passturn = 0;   //パスカウントのリセット
+    }
+    printf("○は%2d個、●は%2d個\n", blackstone, whitestone);
+    if(blackstone > whitestone){
+        printf("○の勝ち！\n");
+    } else if (whitestone > blackstone){
+        printf("●の勝ち！\n");
+    } else {
+        printf("引き分け！\n");
     }
 
-    /*配列の先頭、打つ場所の番号（配列変換済み）、ターン数を渡す
-    それぞれの方向に端っこまで検証する、ターン数で白か黒か決める */
-
+    return 0;
 }
