@@ -3,7 +3,7 @@
 
 int main(void){
     int i, j, x, y, reverse;
-    int passturn = 0;
+    int passturn = 0;   //パスカウント
     int t = 1;
     int blackstone = 2;
     int whitestone = 2;
@@ -37,6 +37,10 @@ int main(void){
             }
             printf("\n");
         }
+        //両者連続してパスすると終了する
+        if(passturn == 2){
+            break;
+        }
 /*配列の先頭、打つ場所の番号（配列変換済み）、ターン数を渡す
 それぞれの方向に端っこまで検証する、ターン数で白か黒か決める */
         x = 0;
@@ -49,7 +53,7 @@ int main(void){
             y = imput();
         }
         y--;//配列用の変換
-        printf("横の座標を入力してね(psを入力でpass)");
+        printf("横の座標を入力してね(psを入力でパス)");
         x = imput();
         while(x == 0){
             printf("フォーマットが違います。もう一度入力してね");
@@ -89,6 +93,7 @@ int main(void){
             whitestone += reverse;
         }
         t++; //正しく打てたらターンを増やす
+        passturn = 0;   //パスカウントのリセット
     }
     printf("○は%2d個、●は%2d個\n", blackstone, whitestone);
     if(blackstone > whitestone){
@@ -96,7 +101,7 @@ int main(void){
     } else if (whitestone > blackstone){
         printf("●の勝ち！\n");
     } else {
-        printf("引き分け！\n")
+        printf("引き分け！\n");
     }
 
     return 0;
