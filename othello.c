@@ -3,6 +3,7 @@
 
 int main(void){
     int i, j, x, y, reverse;
+    int passturn = 0;
     int t = 1;
     int blackstone = 2;
     int whitestone = 2;
@@ -41,20 +42,26 @@ int main(void){
         x = 0;
         y = 0;
         printf("%dターン目\n", t);
-        printf("縦の座標を入力してね");
+        printf("縦の座標を入力してね(psを入力でパス)");
         y = imput();
         while(y == 0){
             printf("フォーマットが違います。もう一度入力してね");
             y = imput();
         }
         y--;//配列用の変換
-        printf("横の座標を入力してね");
+        printf("横の座標を入力してね(psを入力でpass)");
         x = imput();
         while(x == 0){
             printf("フォーマットが違います。もう一度入力してね");
             x = imput();
         }
         x--;//配列用の変換
+        //yかxにpsを入力した場合200がくる
+        if(y == 200 || x == 200){
+            t++;
+            passturn++;
+            continue;
+        }
         //先行は○（内部的には１）
         //範囲外や埋まっている場合はcontinue文で先頭に戻る
         if(board[y][x] != 0 || x < 0 || x > 8 || y < 0 || y > 8) {

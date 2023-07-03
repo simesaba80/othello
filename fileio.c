@@ -14,6 +14,10 @@ int imput(void)
     coordinate = strtol(buf, &s, 10);
     coord = (int)coordinate;
     p = strchr(buf, '\n');
+    //psを渡された場合パス用の値を返す
+    if(strchr(buf, "ps") == 0){
+        return 201; //通常二桁の返り値なので201は渡せない
+    }
     if(p != NULL){
         *p = '\0';  //普通に入力した場合はこちらの処理
     } else {
