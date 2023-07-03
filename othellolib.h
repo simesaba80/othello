@@ -10,4 +10,6 @@ void rightdown(int board[8][8], int, int, int);
 void down(int board[8][8], int, int, int);
 void leftdown(int board[8][8], int, int, int);
 
+int imput(void);
+
 #endif
