@@ -49,25 +49,25 @@ int main(void){
         }
         x--;//配列用の変換
         //先行は○（内部的には１）
-        if(board[y][x] == 0 && x < 8 && y < 8) {
-            if(t % 2 == 1){
-                board[y][x] = 1;
-            } else {
-                board[y][x] = -1;
-            }
-            left(board, y, x, t);
-            leftup(board, y, x, t);
-            up(board, y, x, t);
-            rightup(board, y, x, t);
-            right(board, y, x, t);
-            rightdown(board, y, x, t);
-            down(board, y, x, t);
-            leftdown(board, y, x, t);
-            t++; //正しく打てたらターンを増やす
-      } else {
-            printf("その位置は埋まっているかもしくは範囲外です\n");
+        //範囲外や埋まっている場合はcontinue文で先頭に戻る
+        if(board[y][x] != 0 || x <= 0 || x > 8 || y <= 0 || y > 8) {
+            printf("その場所は埋まっているか範囲外です\n");
+            continue;
         }
-
+        if(t % 2 == 1){
+            board[y][x] = 1;
+        } else {
+            board[y][x] = -1;
+        }
+        left(board, y, x, t);
+        leftup(board, y, x, t);
+        up(board, y, x, t);
+        rightup(board, y, x, t);
+        right(board, y, x, t);
+        rightdown(board, y, x, t);
+        down(board, y, x, t);
+        leftdown(board, y, x, t);
+        t++; //正しく打てたらターンを増やす
     }
 
     /*配列の先頭、打つ場所の番号（配列変換済み）、ターン数を渡す
