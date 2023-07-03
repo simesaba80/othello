@@ -35,14 +35,10 @@ int main(void){
         y = 0;
         printf("%dターン目\n", t);
         printf("縦の座標を入力してね");
-        while(y == 0){
             y = imput();
-        }
         y--;
         printf("横の座標を入力してね");
-        while(x == 0){
             x = imput();
-        }
         x--;
         //先行は○（内部的には１）
         if(board[y][x] == 0 && x < 8 && y < 8) {
