@@ -5,26 +5,30 @@
 
 int imput(void)
 {
-    char buf[3];
-    long coordinate;
-    int i, coord;
-    char *p;
+    char buf[3];    //少数や二桁の数字を渡しても再入力の処理をできるように[3]
+    long coordinate;//文字列から変換する際longになるため
+    int i, coord;   //intとして値を返す用
+    char *s, *p;    //sは変換できない文字を受けとるポインタ、pは改行を示すポインタ
 
     fgets(buf, 3, stdin);
-    coordinate = strtol(buf, NULL, 10);
+    coordinate = strtol(buf, &s, 10);
     coord = (int)coordinate;
     p = strchr(buf, '\n');
     if(p != NULL){
-        *p = '\0';
+        *p = '\0';  //普通に入力した場合はこちらの処理
     } else {
         for(i = 0;;i++){
-            if(getchar() == '\n'){
+            if(getchar() == '\n'){  //多く入力した場合は空読みをする
                 break;
             }
             if(feof(stdin)){
                 break;
             }
         }
+    }
+    //1,2文字目に変換できない文字がある場合0を返す
+    if(*s != '\0'){
+        return 0;
     }
 
     return coord;
