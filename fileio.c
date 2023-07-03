@@ -26,6 +26,9 @@ int imput(void)
             }
         }
     }
+    if(strchr(buf, ',') || strchr(buf, '.')){
+        return 0;
+    }
 
     return coord;
 }
