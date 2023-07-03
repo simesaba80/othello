@@ -191,7 +191,7 @@ int rightdown(int board[8][8], int y, int x, int t)
                 x++;
                 y++;
                 board[y][x] *= -1;
-                int count++;
+                count++;
             }
         }
     }
@@ -264,6 +264,7 @@ int leftdown(int board[8][8], int y, int x, int t)
     return count;
 }
 
+//各方向への判定をする関数をまとめている、ひっくり返した数を返り血にする
 int judgement(int board[8][8], int y, int x, int t)
 {
     int reverse = 0;

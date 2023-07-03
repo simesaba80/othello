@@ -2,7 +2,7 @@
 #include "othellolib.h"
 
 int main(void){
-    int i, j, x, y;
+    int i, j, x, y, reverse;
     int t = 1;
     int board[8][8] = {
         {0, 0, 0, 0, 0, 0, 0, 0},
@@ -59,14 +59,12 @@ int main(void){
         } else {
             board[y][x] = -1;
         }
-        left(board, y, x, t);
-        leftup(board, y, x, t);
-        up(board, y, x, t);
-        rightup(board, y, x, t);
-        right(board, y, x, t);
-        rightdown(board, y, x, t);
-        down(board, y, x, t);
-        leftdown(board, y, x, t);
+        reverse = judgement(board, y, x, t);
+        if(reverse == 0){
+            printf("その場所にはおけません\n");
+            board[y][x] = 0;    //おけなかった場合は取り消してcontinue
+            continue;
+        }
         t++; //正しく打てたらターンを増やす
     }
 
