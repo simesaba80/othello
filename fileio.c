@@ -5,19 +5,19 @@
 
 int imput(void)
 {
-    char buf[2];
+    char buf[3];
     long coordinate;
-    int coord;
+    int i, coord;
     char *p;
 
-    fgets(buf, 2, stdin);
+    fgets(buf, 3, stdin);
     coordinate = strtol(buf, NULL, 10);
     coord = (int)coordinate;
     p = strchr(buf, '\n');
     if(p != NULL){
         *p = '\0';
     } else {
-        for(;;){
+        for(i = 0;;i++){
             if(getchar() == '\n'){
                 break;
             }
