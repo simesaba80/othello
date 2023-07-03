@@ -18,6 +18,9 @@ int main(void){
     };
 
     while(1){
+        if(t == 82){    //82ターン目になったら自動でぬけだす
+            break;
+        }
         printf(" |1|2|3|4|5|6|7|8|\n");
         for(i = 0; i < 8; i++){
             printf("%d|", i+1);
@@ -33,6 +36,8 @@ int main(void){
             }
             printf("\n");
         }
+/*配列の先頭、打つ場所の番号（配列変換済み）、ターン数を渡す
+それぞれの方向に端っこまで検証する、ターン数で白か黒か決める */
         x = 0;
         y = 0;
         printf("%dターン目\n", t);
@@ -67,6 +72,7 @@ int main(void){
             board[y][x] = 0;    //おけなかった場合は取り消してcontinue
             continue;
         }
+        //石をカウントする
         if(t % 2 == 1){
             blackstone += reverse;
             whitestone -= reverse;
@@ -77,8 +83,14 @@ int main(void){
         }
         t++; //正しく打てたらターンを増やす
     }
+    printf("○は%2d個、●は%2d個\n", blackstone, whitestone);
+    if(blackstone > whitestone){
+        printf("○の勝ち！\n");
+    } else if (whitestone > blackstone){
+        printf("●の勝ち！\n");
+    } else {
+        printf("引き分け！\n")
+    }
 
-    /*配列の先頭、打つ場所の番号（配列変換済み）、ターン数を渡す
-    それぞれの方向に端っこまで検証する、ターン数で白か黒か決める */
-
+    return 0;
 }
