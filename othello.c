@@ -85,10 +85,12 @@ int main(void){
         }
         //石をカウントする
         if(t % 2 == 1){
+            blackstone++;   //自分がおいた分のカウント
             blackstone += reverse;
             whitestone -= reverse;
         }
         if(t % 2 == 0){
+            whitestone++;   //自分がおいた分のカウント
             blackstone -= reverse;
             whitestone += reverse;
         }
