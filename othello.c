@@ -39,6 +39,11 @@ int main(void){
             y = imput();
         }
         y--;//配列用の変換
+        if(y == 200){
+            t++;
+            passturn++;
+            continue;
+        }
         printf("横の座標を入力してね(psを入力でパス)");
         x = imput();
         while(x == 0){
@@ -47,7 +52,7 @@ int main(void){
         }
         x--;//配列用の変換
         //yかxにpsを入力した場合200がくる
-        if(y == 200 || x == 200){
+        if(x == 200){
             t++;
             passturn++;
             continue;
