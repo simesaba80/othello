@@ -22,21 +22,7 @@ int main(void){
         if(t == 82){    //82ターン目になったら自動でぬけだす
             break;
         }
-        printf(" |1|2|3|4|5|6|7|8|\n");
-        for(i = 0; i < 8; i++){
-            printf("%d|", i+1);
-            for(j = 0; j < 8; j++){
-                if(board[i][j] == 1){
-                    printf("○|");
-                }
-                else if(board[i][j] == -1){
-                    printf("●|");
-                } else {
-                    printf(" |");
-                }
-            }
-            printf("\n");
-        }
+        printboard(board);
         //両者連続してパスすると終了する
         if(passturn == 2){
             break;
