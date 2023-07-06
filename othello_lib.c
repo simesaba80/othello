@@ -279,3 +279,22 @@ int judgement(int board[8][8], int y, int x, int t)
 
     return reverse;
 }
+
+void printboard(int board[8][8]){
+    int i, j;
+printf(" |1|2|3|4|5|6|7|8|\n");
+    for(i = 0; i < 8; i++){
+        printf("%d|", i+1);
+        for(j = 0; j < 8; j++){
+            if(board[i][j] == 1){
+                printf("○|");
+            }
+            else if(board[i][j] == -1){
+                printf("●|");
+            } else {
+                printf(" |");
+            }
+        }
+        printf("\n");
+    }
+}

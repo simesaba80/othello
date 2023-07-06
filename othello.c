@@ -22,21 +22,7 @@ int main(void){
         if(t == 82){    //82ターン目になったら自動でぬけだす
             break;
         }
-        printf(" |1|2|3|4|5|6|7|8|\n");
-        for(i = 0; i < 8; i++){
-            printf("%d|", i+1);
-            for(j = 0; j < 8; j++){
-                if(board[i][j] == 1){
-                    printf("○|");
-                }
-                else if(board[i][j] == -1){
-                    printf("●|");
-                } else {
-                    printf(" |");
-                }
-            }
-            printf("\n");
-        }
+        printboard(board);
         //両者連続してパスすると終了する
         if(passturn == 2){
             break;
@@ -45,7 +31,12 @@ int main(void){
 それぞれの方向に端っこまで検証する、ターン数で白か黒か決める */
         x = 0;
         y = 0;
-        printf("%dターン目\n", t);
+        printf("%dターン目  ", t);
+        if(t % 2 == 1){
+            printf("○のターンです\n");
+        } else {
+            printf("●のターンです\n");
+        }
         printf("縦の座標を入力してね(psを入力でパス)");
         y = imput();
         while(y == 0){
@@ -53,6 +44,12 @@ int main(void){
             y = imput();
         }
         y--;//配列用の変換
+        //yにpsを入力したら通常入力できない200が来る
+        if(y == 200){
+            t++;
+            passturn++;
+            continue;
+        }
         printf("横の座標を入力してね(psを入力でパス)");
         x = imput();
         while(x == 0){
@@ -60,8 +57,8 @@ int main(void){
             x = imput();
         }
         x--;//配列用の変換
-        //yかxにpsを入力した場合200がくる
-        if(y == 200 || x == 200){
+        //xにpsを入力した場合200がくる
+        if(x == 200){
             t++;
             passturn++;
             continue;
