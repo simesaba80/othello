@@ -31,7 +31,12 @@ int main(void){
 それぞれの方向に端っこまで検証する、ターン数で白か黒か決める */
         x = 0;
         y = 0;
-        printf("%dターン目\n", t);
+        printf("%dターン目  ", t);
+        if(t % 2 == 1){
+            printf("○のターンです\n");
+        } else {
+            printf("●のターンです\n");
+        }
         printf("縦の座標を入力してね(psを入力でパス)");
         y = imput();
         while(y == 0){
@@ -39,6 +44,7 @@ int main(void){
             y = imput();
         }
         y--;//配列用の変換
+        //yにpsを入力したら通常入力できない200が来る
         if(y == 200){
             t++;
             passturn++;
@@ -51,7 +57,7 @@ int main(void){
             x = imput();
         }
         x--;//配列用の変換
-        //yかxにpsを入力した場合200がくる
+        //xにpsを入力した場合200がくる
         if(x == 200){
             t++;
             passturn++;
