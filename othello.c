@@ -39,7 +39,7 @@ int main(void){
         }
         printf("縦の座標を入力してね(psを入力でパス)");
         y = imput();
-        while(y == 0){
+        while(y == 400){
             printf("フォーマットが違います。もう一度入力してね");
             y = imput();
         }
@@ -52,7 +52,7 @@ int main(void){
         }
         printf("横の座標を入力してね(psを入力でパス)");
         x = imput();
-        while(x == 0){
+        while(x == 400){
             printf("フォーマットが違います。もう一度入力してね");
             x = imput();
         }
